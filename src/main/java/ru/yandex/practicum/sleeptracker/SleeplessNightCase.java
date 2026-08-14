@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 
 public class SleeplessNightCase implements Function<List<SleepingSession>, Integer> {
-    private final int SLEEPLESS_NIGHT_MIN_DURATION_IN_MINUTES = 180;
+    private final int sleeplessNightduration = 180;
 /*В ТЗ не увидел точной цифры минимального количества часов для бессонной ночи, поэтому по
 примерам взял 3 часа
  */
@@ -20,7 +20,7 @@ public class SleeplessNightCase implements Function<List<SleepingSession>, Integ
                 .filter(session -> NightSessionsCounter.isNightSession(session))
                 .filter(session -> {
                     long durationMinutes = Duration.between(session.getStartSleeping(), session.getEndSleeping()).toMinutes();
-                    return durationMinutes <= SLEEPLESS_NIGHT_MIN_DURATION_IN_MINUTES;
+                    return durationMinutes <= sleeplessNightduration;
                 })
                 .count();
     }
