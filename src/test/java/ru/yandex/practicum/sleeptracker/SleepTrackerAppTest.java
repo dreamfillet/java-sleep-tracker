@@ -13,7 +13,7 @@ import static ru.yandex.practicum.sleeptracker.SleepingSession.setPersonType;
 public class SleepTrackerAppTest {
 
     @Test
-    void SessionsQuantityCheckUp() {
+    void sessionsQuantityCheckUp() {
         SleepingSession s1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 07, 00), GOOD);
         SleepingSession s2 = new SleepingSession(LocalDateTime.of(2026, 02, 01, 14, 00), LocalDateTime.of(2026, 02, 02, 15, 00), GOOD);
         SleepingSession s3 = new SleepingSession(LocalDateTime.of(2026, 03, 01, 23, 00), LocalDateTime.of(2026, 03, 02, 03, 00), GOOD);
@@ -43,7 +43,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void MinSleepDurationInMinutesCheckUp() {
+    void minSleepDurationInMinutesCheckUp() {
         SleepingSession s1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 07, 00), GOOD);
         SleepingSession s2 = new SleepingSession(LocalDateTime.of(2026, 02, 01, 14, 00), LocalDateTime.of(2026, 02, 01, 15, 00), GOOD);
         SleepingSession s3 = new SleepingSession(LocalDateTime.of(2026, 03, 01, 23, 00), LocalDateTime.of(2026, 03, 02, 03, 00), GOOD);
@@ -74,7 +74,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void MaxSleepDurationInMinutesCheckUp() {
+    void maxSleepDurationInMinutesCheckUp() {
         SleepingSession s1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 07, 00), GOOD);
         SleepingSession s2 = new SleepingSession(LocalDateTime.of(2026, 02, 01, 14, 00), LocalDateTime.of(2026, 02, 01, 15, 00), GOOD);
         SleepingSession s3 = new SleepingSession(LocalDateTime.of(2026, 03, 01, 23, 00), LocalDateTime.of(2026, 03, 02, 03, 00), GOOD);
@@ -105,7 +105,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void AverageSleepDurationInMinutesCheckUp() {
+    void averageSleepDurationInMinutesCheckUp() {
         SleepingSession s1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 07, 00), GOOD);
         SleepingSession s2 = new SleepingSession(LocalDateTime.of(2026, 02, 01, 14, 00), LocalDateTime.of(2026, 02, 01, 15, 00), GOOD);
         SleepingSession s3 = new SleepingSession(LocalDateTime.of(2026, 03, 01, 23, 00), LocalDateTime.of(2026, 03, 02, 03, 00), GOOD);
@@ -136,7 +136,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void BadSleepQualitySessionsCheckUp() {
+    void badSleepQualitySessionsCheckUp() {
         //test1
         SleepingSession badSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 01, 01, 22, 00),
@@ -204,7 +204,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void SleeplessNightSessionsCheckUp1() {
+    void sleeplessNightSessionsCheckUp1() {
         //test1
         SleepingSession sleeplessSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 01, 01, 01, 00),
@@ -233,7 +233,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void SleeplessNightSessionsCheckUp2() {
+    void sleeplessNightSessionsCheckUp2() {
         //test1
         SleepingSession normalSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 01, 01, 01, 00),
@@ -262,7 +262,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void SleeplessNightSessionsCheckUp3() {
+    void sleeplessNightSessionsCheckUp3() {
         SleeplessNightCase counter = new SleeplessNightCase();
 
         assertEquals(0, counter.apply(null), "Null список должен возвращать 0");
@@ -270,7 +270,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void SleeplessNightSessionsCheckUp4() {
+    void sleeplessNightSessionsCheckUp4() {
         //test1
         SleepingSession normalSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 01, 01, 01, 00),
@@ -293,7 +293,7 @@ public class SleepTrackerAppTest {
     }
 
     @Test
-    void PersonTypesCheckUp() {
+    void personTypesCheckUp() {
         SleepingSession owlSession = new SleepingSession(LocalDateTime.of(2026, 01, 01, 23, 05), LocalDateTime.of(2026, 01, 02, 10, 05), GOOD);
         SleepingSession earlyBirdSession = new SleepingSession(LocalDateTime.of(2026, 01, 01, 21, 00), LocalDateTime.of(2026, 01, 02, 06, 30), GOOD);
         SleepingSession pigeonSession = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 04, 00), GOOD);
