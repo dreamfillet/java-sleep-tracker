@@ -4,11 +4,11 @@ import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
-public class AverageSleepDurationInMinutes implements Function<List<SleepingSession>, Integer> {
+public class AverageSleepDurationInMinutes implements Function<List<SleepingSession>, String> {
     @Override
-    public Integer apply(List<SleepingSession> sessions) {
+    public String apply(List<SleepingSession> sessions) {
         if (sessions == null || sessions.isEmpty()) {
-            return 0;
+            return "Среднее количество сессий сна: 0";
         }
 
         double average = sessions.stream()
@@ -16,6 +16,6 @@ public class AverageSleepDurationInMinutes implements Function<List<SleepingSess
                 .average()
                 .orElse(0.0);
 
-        return (int) average;
+        return "Среднее количество сессий сна: " + (int) average;
     }
 }

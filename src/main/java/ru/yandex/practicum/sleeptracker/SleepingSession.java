@@ -4,15 +4,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class SleepingSession {
-    /*Удобно конвертировать содержимое каждой сессии сна в отдельный объект класса
-    «Сессия сна» — назовём его SleepingSession. Также подумайте, какой тип данных
-    будет удобно использовать для хранения информации о качестве сна
-     */
+
     private LocalDateTime startSleeping;
     private LocalDateTime endSleeping;
-    private int duration;
     private SleepQuality quality;
-    private String personType;
+    private PersonType personType;
 
     public SleepingSession(LocalDateTime startSleeping, LocalDateTime endSleeping, SleepQuality quality) {
         this.startSleeping = startSleeping;
@@ -20,7 +16,7 @@ public class SleepingSession {
         this.quality = quality;
     }
 
-    public void setPersonType(String personType) {
+    public void setPersonType(PersonType personType) {
         this.personType = personType;
     }
 
@@ -32,12 +28,12 @@ public class SleepingSession {
         return endSleeping;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
     public SleepQuality getQuality() {
         return quality;
+    }
+
+    public PersonType getPersonType() {
+        return personType;
     }
 
     @Override
@@ -47,8 +43,7 @@ public class SleepingSession {
                 ";" + quality;
     }
 
-    public static String setPersonType(SleepingSession session) {
-
+    public static PersonType setPersonType(SleepingSession session) {
         LocalTime startTime = session.getStartSleeping().toLocalTime();
         LocalTime endTime = session.getEndSleeping().toLocalTime();
 
@@ -58,14 +53,12 @@ public class SleepingSession {
         LocalTime nightStart2 = LocalTime.of(22, 0);
         LocalTime nightEnd2 = LocalTime.of(7, 0);
 
-
         if (startTime.isAfter(nightStart1) && endTime.isAfter(nightEnd1)) {
-            return "Сова";
+            return PersonType.Сова;
         } else if (startTime.isBefore(nightStart2) && endTime.isBefore(nightEnd2)) {
-            return "Жаворонок";
+            return PersonType.Жаворонок;
         } else {
-            return "Голубь";
+            return PersonType.Голубь;
         }
-
     }
 }

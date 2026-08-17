@@ -4,14 +4,14 @@ import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
-public class MaxSleepDurationInMinutes implements Function<List<SleepingSession>, Integer> {
+public class MaxSleepDurationInMinutes implements Function<List<SleepingSession>, String> {
     @Override
-    public Integer apply(List<SleepingSession> sessions) {
+    public String apply(List<SleepingSession> sessions) {
         if (sessions == null || sessions.isEmpty()) {
-            return 0;
+            return "Максимальная продолжительность сессии (в минутах): 0";
         }
 
-        return sessions.stream()
+        return "Максимальная продолжительность сессии (в минутах): " + sessions.stream()
                 .map(session -> {
                     long minutes = Duration.between(session.getStartSleeping(), session.getEndSleeping()).toMinutes();
                     return (int) minutes;

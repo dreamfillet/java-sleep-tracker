@@ -1,24 +1,19 @@
 package ru.yandex.practicum.sleeptracker;
 
 public class SleepAnalysisResult {
-    private final String description;
-    private final Integer value;
 
-    public SleepAnalysisResult(String description, Integer value) {
-        this.description = description;
+    private final Object value;
+
+    public SleepAnalysisResult(Object value) {
         this.value = value;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Integer getValue() {
+    public Object getValue() {
         return value;
     }
 
     @Override
     public String toString() {
-        return description + ": " + value;
+        return (String) value;
     }
 }

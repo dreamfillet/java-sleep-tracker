@@ -1,29 +1,39 @@
 package ru.yandex.practicum.sleeptracker;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
-public class SleeplessNightCase implements Function<List<SleepingSession>, Integer> {
-    private final int sleeplessNightduration = 180;
-/*В ТЗ не увидел точной цифры минимального количества часов для бессонной ночи, поэтому по
-примерам взял 3 часа
- */
+public class SleeplessNightCase implements Function<List<SleepingSession>, String> {
+    private final int sleeplessNightDuration = 180;
 
     @Override
-    public Integer apply(List<SleepingSession> sessions) {
+    public String apply(List<SleepingSession> sessions) {
         if (sessions == null || sessions.isEmpty()) {
-            return 0;
+            return "Количество бессонных ночей: 0";
         }
-        return (int) sessions.stream()
-                .filter(session -> NightSessionsCounter.isNightSession(session))
-                .filter(session -> {
-                    long durationMinutes = Duration.between(session.getStartSleeping(), session.getEndSleeping()).toMinutes();
-                    return durationMinutes <= sleeplessNightduration;
+
+        Map<LocalDate, List<SleepingSession>> byDate = sessions.stream()
+                .collect(Collectors.groupingBy(s -> s.getStartSleeping().toLocalDate()));
+
+        long sleeplessNights = byDate.values().stream()
+                .filter(daySessions -> {
+                    long nightMinutes = daySessions.stream()
+                            .filter(NightSessionsCounter::isNightSession)
+                            .mapToLong(s -> Duration.between(s.getStartSleeping(), s.getEndSleeping()).toMinutes())
+                            .sum();
+                    return nightMinutes <= sleeplessNightDuration;
                 })
                 .count();
+
+        return "Количество бессонных ночей: " + sleeplessNights;
     }
+
+
 }
 
 
