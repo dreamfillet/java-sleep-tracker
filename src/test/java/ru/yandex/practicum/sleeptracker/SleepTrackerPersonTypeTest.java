@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.yandex.practicum.sleeptracker.SleepQuality.GOOD;
-import static ru.yandex.practicum.sleeptracker.SleepingSession.setPersonType;
 
 public class SleepTrackerPersonTypeTest {
     @Test
@@ -33,21 +32,21 @@ public class SleepTrackerPersonTypeTest {
 
     @Test
     void personTypesCheckUp2() {
-        SleepingSession Session1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 05), LocalDateTime.of(2026, 01, 02, 10, 05), GOOD);
-        SleepingSession Session2 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 21, 00), LocalDateTime.of(2026, 01, 02, 07, 30), GOOD);
-        SleepingSession Session3 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 04, 00), GOOD);
+        SleepingSession session1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 05), LocalDateTime.of(2026, 01, 02, 10, 05), GOOD);
+        SleepingSession session2 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 21, 00), LocalDateTime.of(2026, 01, 02, 07, 30), GOOD);
+        SleepingSession session3 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 00), LocalDateTime.of(2026, 01, 02, 04, 00), GOOD);
 
         List<SleepingSession> list1 = new ArrayList<>();
-        list1.add(Session1);
-        list1.add(Session2);
-        list1.add(Session3);
+        list1.add(session1);
+        list1.add(session2);
+        list1.add(session3);
 
-        String Type1 = SleepingSession.setPersonType(Session1).name();
-        String Type2 = SleepingSession.setPersonType(Session2).name();
-        String Type3 = SleepingSession.setPersonType(Session3).name();
+        String type1 = SleepingSession.setPersonType(session1).name();
+        String type2 = SleepingSession.setPersonType(session2).name();
+        String type3 = SleepingSession.setPersonType(session3).name();
 
-        assertEquals("Голубь", Type1, "Должен быть хронотип 'Голубь'");
-        assertEquals("Голубь", Type2, "Должен быть хронотип 'Голубь'");
-        assertEquals("Голубь", Type3, "Должен быть хронотип 'Голубь'");
+        assertEquals("Голубь", type1, "Должен быть хронотип 'Голубь'");
+        assertEquals("Голубь", type2, "Должен быть хронотип 'Голубь'");
+        assertEquals("Голубь", type3, "Должен быть хронотип 'Голубь'");
     }
 }
