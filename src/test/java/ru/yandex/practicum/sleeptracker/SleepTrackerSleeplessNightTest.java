@@ -110,6 +110,7 @@ public class SleepTrackerSleeplessNightTest {
 
         assertEquals(0, value1, "нет бессонных ночей");
     }
+
     @Test
     void sleeplessNightSessionsCheckUp5() {
 

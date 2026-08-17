@@ -12,13 +12,13 @@ public class BadSleepQualitySessions implements Function<List<SleepingSession>, 
             return "Количество сессий с плохим качеством сна: " + List.of();
         }
 
-       long badSessions = sessions.stream()
+        long badSessions = sessions.stream()
                 .filter(session -> {
                     String q = String.valueOf(session.getQuality());
                     if (q == null) return false;
                     return "BAD".equals(q.trim());
                 })
-               .count();
+                .count();
 
 
         return "Количество сессий с плохим качеством сна: " + badSessions;

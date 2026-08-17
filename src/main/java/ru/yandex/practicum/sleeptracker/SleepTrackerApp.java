@@ -19,7 +19,7 @@ public class SleepTrackerApp {
             return;
         }
 
-            app.loadFile(args[0]);
+        app.loadFile(args[0]);
 
         if (sessions.isEmpty()) {
             System.out.println("Нет данных для анализа.");
@@ -36,7 +36,7 @@ public class SleepTrackerApp {
         //вывод сессии с минимальной длительностью сна
         MinSleepDurationInMinutes min = new MinSleepDurationInMinutes();
         String minMinutes = min.apply(SleepTrackerApp.sessions);
-        SleepAnalysisResult sessionsMinPrint = new SleepAnalysisResult( minMinutes);
+        SleepAnalysisResult sessionsMinPrint = new SleepAnalysisResult(minMinutes);
         System.out.println(sessionsMinPrint);
         System.out.println("__________________");
 
@@ -93,12 +93,12 @@ public class SleepTrackerApp {
                     LocalDateTime end = LocalDateTime.parse(parts[1].trim(), formatter);
                     SleepQuality quality = SleepQuality.valueOf(parts[2].trim().toUpperCase());
 
-                   SleepingSession session = new SleepingSession(start, end, quality);
+                    SleepingSession session = new SleepingSession(start, end, quality);
                     // String type = SleepingSession.setPersonType(session);
-                   // session.setPersonType(type);
+                    // session.setPersonType(type);
                     sessions.add(session);
 
-                    System.out.println("Загруженная сессия " +  lineNumber + ": " + session);
+                    System.out.println("Загруженная сессия " + lineNumber + ": " + session);
 
                 } catch (DateTimeParseException e) {
                     System.err.println("Ошибка формата даты в строке " + lineNumber + ": " + line);

@@ -30,6 +30,7 @@ public class SleepTrackerPersonTypeTest {
         assertEquals("Жаворонок", earlyBirdType, "Должен быть хронотип 'Жаворонок'");
         assertEquals("Голубь", pigeonType, "Должен быть хронотип 'Голубь'");
     }
+
     @Test
     void personTypesCheckUp2() {
         SleepingSession Session1 = new SleepingSession(LocalDateTime.of(2026, 01, 01, 22, 05), LocalDateTime.of(2026, 01, 02, 10, 05), GOOD);
@@ -45,8 +46,8 @@ public class SleepTrackerPersonTypeTest {
         String Type2 = SleepingSession.setPersonType(Session2).name();
         String Type3 = SleepingSession.setPersonType(Session3).name();
 
-        assertEquals("Голубь", Type1, "Должен быть хронотип 'Сова'");
-        assertEquals("Голубь", Type2, "Должен быть хронотип 'Жаворонок'");
+        assertEquals("Голубь", Type1, "Должен быть хронотип 'Голубь'");
+        assertEquals("Голубь", Type2, "Должен быть хронотип 'Голубь'");
         assertEquals("Голубь", Type3, "Должен быть хронотип 'Голубь'");
     }
 }
