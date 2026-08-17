@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.yandex.practicum.sleeptracker.SleepQuality.*;
-import static ru.yandex.practicum.sleeptracker.SleepingSession.setPersonType;
 
 public class SleepTrackerQuantityTest {
     @Test
