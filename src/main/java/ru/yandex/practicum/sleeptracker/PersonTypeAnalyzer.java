@@ -46,23 +46,23 @@ public class PersonTypeAnalyzer implements Function<List<SleepingSession>, Strin
         LocalTime startTime = session.getStartSleeping().toLocalTime();
         LocalTime endTime = session.getEndSleeping().toLocalTime();
 
-        LocalTime OWL_START = LocalTime.of(23, 0);
-        LocalTime OWL_END = LocalTime.of(9, 0);
-        LocalTime EARLYBIRD_START = LocalTime.of(22, 0);
-        LocalTime EARLYBIRD_END = LocalTime.of(7, 0);
+        LocalTime owlStart = LocalTime.of(23, 0);
+        LocalTime owlEnd = LocalTime.of(9, 0);
+        LocalTime earlybirdStart = LocalTime.of(22, 0);
+        LocalTime earlybirdEnd = LocalTime.of(7, 0);
 
-        boolean isOwlStart = startTime.isAfter(OWL_START) ||
-                startTime.equals(OWL_START) ||
+        boolean isOwlStart = startTime.isAfter(owlStart) ||
+                startTime.equals(owlStart) ||
                 startTime.isBefore(LocalTime.of(6, 0));
 
-        boolean isOwlEnd = endTime.isAfter(OWL_END) || endTime.equals(OWL_END);
+        boolean isOwlEnd = endTime.isAfter(owlEnd) || endTime.equals(owlEnd);
 
         if (isOwlStart && isOwlEnd) {
             return PersonType.OWL;
         }
 
-        boolean isEarlybirdStart = startTime.isBefore(EARLYBIRD_START) || startTime.equals(EARLYBIRD_START);
-        boolean isEarlybirdEnd = endTime.isBefore(EARLYBIRD_END) || endTime.equals(EARLYBIRD_END);
+        boolean isEarlybirdStart = startTime.isBefore(earlybirdStart) || startTime.equals(earlybirdStart);
+        boolean isEarlybirdEnd = endTime.isBefore(earlybirdEnd) || endTime.equals(earlybirdEnd);
 
         if (isEarlybirdStart && isEarlybirdEnd) {
             return PersonType.EARLYBIRD;
