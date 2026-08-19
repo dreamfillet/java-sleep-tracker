@@ -43,22 +43,32 @@ public class SleepingSession {
                 ";" + quality;
     }
 
-    public static PersonType setPersonType(SleepingSession session) {
+    public PersonType setPersonType(SleepingSession session) {
         LocalTime startTime = session.getStartSleeping().toLocalTime();
         LocalTime endTime = session.getEndSleeping().toLocalTime();
 
-        LocalTime nightStart1 = LocalTime.of(23, 0);
-        LocalTime nightEnd1 = LocalTime.of(9, 0);
+        LocalTime OWL_START = LocalTime.of(23, 0);
+        LocalTime OWL_END = LocalTime.of(9, 0);
+        LocalTime EARLYBIRD_START = LocalTime.of(22, 0);
+        LocalTime EARLYBIRD_END = LocalTime.of(7, 0);
 
-        LocalTime nightStart2 = LocalTime.of(22, 0);
-        LocalTime nightEnd2 = LocalTime.of(7, 0);
+        boolean isOwlStart = startTime.isAfter(OWL_START) ||
+                startTime.equals(OWL_START) ||
+                startTime.isBefore(LocalTime.of(6, 0));
 
-        if (startTime.isAfter(nightStart1) && endTime.isAfter(nightEnd1)) {
-            return PersonType.Сова;
-        } else if (startTime.isBefore(nightStart2) && endTime.isBefore(nightEnd2)) {
-            return PersonType.Жаворонок;
-        } else {
-            return PersonType.Голубь;
+        boolean isOwlEnd = endTime.isAfter(OWL_END) || endTime.equals(OWL_END);
+
+        if (isOwlStart && isOwlEnd) {
+            return PersonType.OWL;
         }
+
+        boolean isEarlybirdStart = startTime.isBefore(EARLYBIRD_START) || startTime.equals(EARLYBIRD_START);
+        boolean isEarlybirdEnd = endTime.isBefore(EARLYBIRD_END) || endTime.equals(EARLYBIRD_END);
+
+        if (isEarlybirdStart && isEarlybirdEnd) {
+            return PersonType.EARLYBIRD;
+        }
+
+        return PersonType.PIGEON;
     }
 }

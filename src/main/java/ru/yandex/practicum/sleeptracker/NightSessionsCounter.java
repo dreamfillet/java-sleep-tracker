@@ -26,14 +26,12 @@ public class NightSessionsCounter implements Function<List<SleepingSession>, Int
         boolean crossesMidnight = !session.getStartSleeping().toLocalDate().equals(session.getEndSleeping().toLocalDate());
 
         boolean startInNight = (startTime.isAfter(nightStart) || startTime.equals(nightStart)) ||
-                startTime.isBefore(nightEnd);
-
+                startTime.isBefore(nightEnd) || startTime.equals(nightEnd);
         boolean endInNight = (endTime.isAfter(nightStart) || endTime.equals(nightStart)) ||
-                endTime.isBefore(nightEnd);
+                endTime.isBefore(nightEnd) || endTime.equals(nightEnd);
 
         return crossesMidnight || startInNight || endInNight;
     }
-
 
 }
 

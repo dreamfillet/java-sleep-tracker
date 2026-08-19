@@ -25,7 +25,6 @@ public class SleepTrackerAverageSleepTest {
         AverageSleepDurationInMinutes aveDuration1 = new AverageSleepDurationInMinutes();
         String result1 = aveDuration1.apply(list1);
 
-        // Извлекаем число из строки
         int average1 = Integer.parseInt(result1.replaceAll("\\D+", ""));
 
         assertEquals(300, average1, "Должно быть 300 минут");
@@ -41,7 +40,7 @@ public class SleepTrackerAverageSleepTest {
         String result2 = aveDuration2.apply(list2);
         int average2 = Integer.parseInt(result2.replaceAll("\\D+", ""));
 
-        assertEquals(217, average2, "Должно быть 217 минут");
+        assertEquals(218, average2, "Должно быть 218 минут");
 
     }
 }

@@ -49,10 +49,11 @@ public class SleepTrackerApp {
 
         //вывод сессии со средней длительностью сна
         AverageSleepDurationInMinutes average = new AverageSleepDurationInMinutes();
-        String averageMinutes = average.apply(SleepTrackerApp.sessions);
+        String averageMinutes = (String) average.apply(SleepTrackerApp.sessions);
         SleepAnalysisResult sessionsAveragePrint = new SleepAnalysisResult(averageMinutes);
         System.out.println(sessionsAveragePrint);
         System.out.println("__________________");
+
 
         //вывод количества сессий с плохим качеством сна
         BadSleepQualitySessions badSessions = new BadSleepQualitySessions();
@@ -94,8 +95,6 @@ public class SleepTrackerApp {
                     SleepQuality quality = SleepQuality.valueOf(parts[2].trim().toUpperCase());
 
                     SleepingSession session = new SleepingSession(start, end, quality);
-                    // String type = SleepingSession.setPersonType(session);
-                    // session.setPersonType(type);
                     sessions.add(session);
 
                     System.out.println("Загруженная сессия " + lineNumber + ": " + session);

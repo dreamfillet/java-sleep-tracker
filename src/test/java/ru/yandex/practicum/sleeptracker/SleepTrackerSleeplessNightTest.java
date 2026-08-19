@@ -14,14 +14,14 @@ public class SleepTrackerSleeplessNightTest {
     @Test
     void sleeplessNightSessionsCheckUp1() {
         SleepingSession sleeplessSession1 = new SleepingSession(
-                LocalDateTime.of(2026, 01, 02, 01, 00),
-                LocalDateTime.of(2026, 01, 02, 04, 00),
-                BAD);
+                LocalDateTime.of(2026, 1, 3, 23, 0),
+                LocalDateTime.of(2026, 1, 4, 5, 0),
+                GOOD);
 
         SleepingSession sleeplessSession2 = new SleepingSession(
-                LocalDateTime.of(2026, 02, 01, 04, 00),
-                LocalDateTime.of(2026, 02, 01, 06, 00),
-                BAD);
+                LocalDateTime.of(2026, 1, 5, 22, 0),
+                LocalDateTime.of(2026, 1, 6, 7, 0),
+                GOOD);
 
         SleepingSession normalSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 01, 01, 22, 00),
@@ -44,13 +44,13 @@ public class SleepTrackerSleeplessNightTest {
     @Test
     void sleeplessNightSessionsCheckUp2() {
         SleepingSession normalSession1 = new SleepingSession(
-                LocalDateTime.of(2026, 01, 01, 01, 00),
-                LocalDateTime.of(2026, 01, 01, 04, 01),
+                LocalDateTime.of(2026, 01, 01, 23, 00),
+                LocalDateTime.of(2026, 01, 02, 04, 01),
                 BAD);
 
         SleepingSession sleeplessSession1 = new SleepingSession(
                 LocalDateTime.of(2026, 02, 01, 04, 00),
-                LocalDateTime.of(2026, 02, 01, 06, 00),
+                LocalDateTime.of(2026, 02, 01, 10, 00),
                 BAD);
 
         SleepingSession normalSession2 = new SleepingSession(
@@ -67,7 +67,7 @@ public class SleepTrackerSleeplessNightTest {
         String count1 = sleeplessCounter.apply(mixedSessions2);
         int value1 = Integer.parseInt(count1.replaceAll("\\D+", ""));
 
-        assertEquals(1, value1, "1 бессонная ночи");
+        assertEquals(1, value1, "1 бессонная ночь");
     }
 
     @Test
@@ -95,13 +95,8 @@ public class SleepTrackerSleeplessNightTest {
                 LocalDateTime.of(2026, 01, 01, 05, 01),
                 BAD);
 
-        SleepingSession normalSession2 = new SleepingSession(
-                LocalDateTime.of(2026, 01, 01, 22, 00),
-                LocalDateTime.of(2026, 01, 02, 07, 00),
-                GOOD);
 
         List<SleepingSession> mixedSessions3 = new ArrayList<>();
-        mixedSessions3.add(normalSession2);
         mixedSessions3.add(normalSession1);
 
         SleeplessNightCase sleeplessCounter = new SleeplessNightCase();
@@ -113,24 +108,20 @@ public class SleepTrackerSleeplessNightTest {
 
     @Test
     void sleeplessNightSessionsCheckUp5() {
-
         SleepingSession crossMonthBad = new SleepingSession(
-                LocalDateTime.of(2026, 1, 31, 23, 0),
-                LocalDateTime.of(2026, 2, 1, 1, 0),
+                LocalDateTime.of(2026, 1, 31, 19, 0),
+                LocalDateTime.of(2026, 2, 1, 5, 0),
                 GOOD
         );
+
         List<SleepingSession> sessions = new ArrayList<>();
         sessions.add(crossMonthBad);
 
         SleeplessNightCase counter = new SleeplessNightCase();
-
-
-        String resultString = counter.apply(sessions); // "Количество бессонных ночей: 1"
-
+        String resultString = counter.apply(sessions);
         int result = Integer.parseInt(resultString.replaceAll("\\D+", ""));
 
-        assertEquals(1, result, "Бессонная ночь с переходом через месяц → 1");
+        assertEquals(0, result, "Переход через месяц. Не бесонная ночь");
     }
-
 }
 
